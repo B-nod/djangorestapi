@@ -13,11 +13,11 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'description','file', 'poster','poster_id', 'created', 'comments']
     
     def get_comments(self, post):
-        return Comment.objects.filter(post=post).count()
+        return Comment.objects.filter(post=post).values()
 
     
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ['id', 'comment', 'user', 'post']
+        fields = ['id', 'comment']
